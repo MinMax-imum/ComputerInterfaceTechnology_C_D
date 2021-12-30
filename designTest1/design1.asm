@@ -66,7 +66,7 @@ NEXT:	PRINTS	MSIN		;输出提示文字
 	CMP	AL,	"f"	;ASCII大于等于"a"的ASCII时
 	JA	JNAN		;ASCII大于"f"的ASCII则不是数字
 				;ASCII小于等于"f"的ASCII则是数字
-	;输出小写字母a到f的十六进制的ASCII码值			
+	;输出小写字母a到f的十六进制的ASCII码值
 	PRINTS	MSOUT		;输出提示文字
 	PRINTC	"6"
 	MOV	AL,	KCODE
