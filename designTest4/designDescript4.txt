@@ -1,3 +1,4 @@
+This file is written in Chinese.
 
 设计题4字符串匹配设计
 
