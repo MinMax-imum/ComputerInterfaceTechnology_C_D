@@ -1,27 +1,28 @@
-;´ËÎÄµµ±àÂëÎªGBK
-;Ê¹ÓÃÊ±Çë±£Ö¤ÆäÎÄ¼þÃûºÍ¸÷¼¶ÎÄ¼þ¼ÐÃû¶¼Ð¡ÓÚ8¸ö×Ö·û
-;(ÀýÈç¡°D:\ASM\d1XyASM\d1Xy.asm¡±)
 
-;Ê®Áù½øÖÆ×ª»»ÎªASCIIÂë
+;æ­¤æ–‡æ¡£ç¼–ç ä¸ºGBK
+;ä½¿ç”¨æ—¶è¯·ä¿è¯å…¶æ–‡ä»¶åå’Œå„çº§æ–‡ä»¶å¤¹åéƒ½å°äºŽ8ä¸ªå­—ç¬¦
+;(ä¾‹å¦‚â€œD:\ASM\d1XyASM\d1Xy.asmâ€)
 
-;¿¼ÂÇµ½ÐÇÑÐ¼¯³ÉÈí¼þÆ½Ì¨¿ÉÖ±½ÓÀûÓÃDOSµ÷ÓÃÊäÈëÊ®Áù½øÖÆÊý×Ö
-;ÕâÀïÐ´½öÊÊÓÃÓÚÐÇÑÐ¼¯³ÉÈí¼þÆ½Ì¨µÄ´úÂë
+;åå…­è¿›åˆ¶è½¬æ¢ä¸ºASCIIç 
 
-;EXTKEY	EQU	00H	;¼üÈë0ÎªÍË³ö
-EXTKEY	EQU	0FH	;¼üÈë16(¼´F¼ü)ÎªÍË³ö
+;è€ƒè™‘åˆ°æ˜Ÿç ”é›†æˆè½¯ä»¶å¹³å°å¯ç›´æŽ¥åˆ©ç”¨DOSè°ƒç”¨è¾“å…¥åå…­è¿›åˆ¶æ•°å­—
+;è¿™é‡Œå†™ä»…é€‚ç”¨äºŽæ˜Ÿç ”é›†æˆè½¯ä»¶å¹³å°çš„ä»£ç 
 
-;Êä³ö×Ö·û´®µÄºê»ã±à
-;²ÎÊýSTRPÎª×Ö·û´®Ö¸Õë
-;×¢ÒâÊ¹ÓÃÕâ¸ö»áÓ°ÏìDXºÍAX
+;EXTKEY	EQU	00H	;é”®å…¥0ä¸ºé€€å‡º
+EXTKEY	EQU	0FH	;é”®å…¥16(å³Fé”®)ä¸ºé€€å‡º
+
+;è¾“å‡ºå­—ç¬¦ä¸²çš„å®æ±‡ç¼–
+;å‚æ•°STRPä¸ºå­—ç¬¦ä¸²æŒ‡é’ˆ
+;æ³¨æ„ä½¿ç”¨è¿™ä¸ªä¼šå½±å“DXå’ŒAX
 PRINTS	MACRO	STRP
 	LEA	DX,	STRP
 	MOV	AH,	09H
 	INT	21H
 	ENDM
 
-;Êä³öÒ»¸ö×Ö·ûµÄºê»ã±à
-;²ÎÊýCHRCÎª×Ö·ûµÄASCIIÂë
-;×¢ÒâÊ¹ÓÃÕâ¸ö»áÓ°ÏìDLºÍAX
+;è¾“å‡ºä¸€ä¸ªå­—ç¬¦çš„å®æ±‡ç¼–
+;å‚æ•°CHRCä¸ºå­—ç¬¦çš„ASCIIç 
+;æ³¨æ„ä½¿ç”¨è¿™ä¸ªä¼šå½±å“DLå’ŒAX
 PRINTC	MACRO	CHRC
 	MOV	DL,	CHRC
 	MOV	AH,	02H
@@ -42,7 +43,7 @@ ELSE
 ENDIF
 	MSIN	DB	0AH, "Input your HEX number: '", "$"
 	KCODE	DB	?
-	TABC	DB	(16 * 5) DUP (?)	;Áô³öÀ´¿Õ¼äÓÃÓÚ´æ·Å±í¸ñ
+	TABC	DB	(16 * 5) DUP (?)	;ç•™å‡ºæ¥ç©ºé—´ç”¨äºŽå­˜æ”¾è¡¨æ ¼
 	MSOUT	DB	"'. The ASCII is: ", "$"
 	MSHDOT	DB	"H.", "$"
 	MSNAN	DB	"'. Error: Not a HEX number! ", "$"
@@ -52,12 +53,12 @@ CODE	SEGMENT
 	ASSUME	CS:CODE, DS:DATA, SS:_STACK
 STA:	MOV	AX,	DATA
 	MOV	DS,	AX
-	PRINTC	0AH		;»»ÐÐ
-	PRINTS	MSWLC		;Êä³ö»¶Ó­ÌáÊ¾ÎÄ×Ö
-	PRINTS	MSTIP		;Êä³öÍË³ö·½·¨ÌáÊ¾ÎÄ×Ö
-	;Éú³É±í¸ñÇ°°ë²¿·Ö
-	MOV	CX,	10	;³õÊ¼»¯¼ÆÊýÆ÷
-	LEA	BX,	TABC	;³õÊ¼»¯Êý¾ÝÖ¸Õë
+	PRINTC	0AH		;æ¢è¡Œ
+	PRINTS	MSWLC		;è¾“å‡ºæ¬¢è¿Žæç¤ºæ–‡å­—
+	PRINTS	MSTIP		;è¾“å‡ºé€€å‡ºæ–¹æ³•æç¤ºæ–‡å­—
+	;ç”Ÿæˆè¡¨æ ¼å‰åŠéƒ¨åˆ†
+	MOV	CX,	10	;åˆå§‹åŒ–è®¡æ•°å™¨
+	LEA	BX,	TABC	;åˆå§‹åŒ–æ•°æ®æŒ‡é’ˆ
 	MOV	AL,	"0"
 CTABF:	MOV	BYTE PTR [BX],	"3"
 	INC	BX
@@ -71,8 +72,8 @@ CTABF:	MOV	BYTE PTR [BX],	"3"
 	MOV	BYTE PTR [BX],	"$"
 	INC	BX
 	LOOP	CTABF
-	;Éú³É±í¸ñºó°ë²¿·Ö(Êý¾ÝÖ¸Õë½ÓÐø²»±ä)
-	MOV	CX,	6	;³õÊ¼»¯¼ÆÊýÆ÷
+	;ç”Ÿæˆè¡¨æ ¼åŽåŠéƒ¨åˆ†(æ•°æ®æŒ‡é’ˆæŽ¥ç»­ä¸å˜)
+	MOV	CX,	6	;åˆå§‹åŒ–è®¡æ•°å™¨
 	MOV	AL,	"1"
 CTABB:	MOV	BYTE PTR [BX],	"4"
 	INC	BX
@@ -86,29 +87,29 @@ CTABB:	MOV	BYTE PTR [BX],	"4"
 	MOV	BYTE PTR [BX],	"$"
 	INC	BX
 	LOOP	CTABB
-	;±í¸ñÉú³ÉÍê±Ï
-NEXT:	PRINTS	MSIN		;Êä³öÌáÊ¾ÎÄ×Ö
-	;µÈ´ýÊäÈëÒ»¸ö×Ö·û
-	MOV	AX,	0101H	;XingyanÐÇÑÐ¼¯³ÉÈí¼þÆ½Ì¨
-	INT	21H		;¿ÉÖ±½ÓÊäÈëÊ®Áù½øÖÆÊý×Ö
-	MOV	KCODE,	AL	;½«ÊäÈëµÄÊý×Ö×°ÈëÄÚ´æ
+	;è¡¨æ ¼ç”Ÿæˆå®Œæ¯•
+NEXT:	PRINTS	MSIN		;è¾“å‡ºæç¤ºæ–‡å­—
+	;ç­‰å¾…è¾“å…¥ä¸€ä¸ªå­—ç¬¦
+	MOV	AX,	0101H	;Xingyanæ˜Ÿç ”é›†æˆè½¯ä»¶å¹³å°
+	INT	21H		;å¯ç›´æŽ¥è¾“å…¥åå…­è¿›åˆ¶æ•°å­—
+	MOV	KCODE,	AL	;å°†è¾“å…¥çš„æ•°å­—è£…å…¥å†…å­˜
 	CMP	AL,	0FH
-	JA	_ERR		;ÊäÈëÄÚÈÝÈô³öÏÖ´óÓÚ15µÄÔò±¨´í
+	JA	_ERR		;è¾“å…¥å†…å®¹è‹¥å‡ºçŽ°å¤§äºŽ15çš„åˆ™æŠ¥é”™
 	MOV	CL,	5
-	MUL	CL		;¼ÆËãAL * 5×¼±¸²é±í
-	MOV	SI,	AX	;½«¼ÆËã½á¹û×°ÈëSI
-	PRINTS	MSOUT		;Êä³öÌáÊ¾ÎÄ×Ö
-	LEA	BX,	TABC	;¿ªÊ¼²é±í
+	MUL	CL		;è®¡ç®—AL * 5å‡†å¤‡æŸ¥è¡¨
+	MOV	SI,	AX	;å°†è®¡ç®—ç»“æžœè£…å…¥SI
+	PRINTS	MSOUT		;è¾“å‡ºæç¤ºæ–‡å­—
+	LEA	BX,	TABC	;å¼€å§‹æŸ¥è¡¨
 	LEA	DX,	[BX + SI]
-	MOV	AH,	09H	;Êä³ö²é±í½á¹û
+	MOV	AH,	09H	;è¾“å‡ºæŸ¥è¡¨ç»“æžœ
 	INT	21H
 	JMP	ISEXT
-_ERR:	PRINTS	MSNAN		;Êä³ö´íÎóÐÅÏ¢
-ISEXT:	CMP	KCODE,	EXTKEY	;ÅÐ¶ÏÊäÈëµÄÊÇ²»ÊÇÍË³ö³ÌÐòµÄ¼ü
-	JNE	NEXT		;²»ÊÇÔò×¼±¸ÏÂÒ»´ÎÊäÈë
-	PRINTC	0AH		;»»ÐÐ
-	PRINTS	MSEND		;Êä³ö½áÊøÍË³öÌáÊ¾ÎÄ×Ö
-	;ÍË³ö³ÌÐò·µ»ØDOSÏµÍ³
+_ERR:	PRINTS	MSNAN		;è¾“å‡ºé”™è¯¯ä¿¡æ¯
+ISEXT:	CMP	KCODE,	EXTKEY	;åˆ¤æ–­è¾“å…¥çš„æ˜¯ä¸æ˜¯é€€å‡ºç¨‹åºçš„é”®
+	JNE	NEXT		;ä¸æ˜¯åˆ™å‡†å¤‡ä¸‹ä¸€æ¬¡è¾“å…¥
+	PRINTC	0AH		;æ¢è¡Œ
+	PRINTS	MSEND		;è¾“å‡ºç»“æŸé€€å‡ºæç¤ºæ–‡å­—
+	;é€€å‡ºç¨‹åºè¿”å›žDOSç³»ç»Ÿ
 	MOV	AH,	4CH
 	INT	21H
 CODE	ENDS
