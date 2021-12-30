@@ -1,5 +1,5 @@
 
-;此文档编码为GBK
+;此文档编码应为GBK
 ;使用时请保证其文件名和各级文件夹名都小于8个字符
 ;(例如“D:\ASM\d1XyASM\d1Xy.asm”)
 
@@ -96,7 +96,7 @@ NEXT:	PRINTS	MSIN		;输出提示文字
 	CMP	AL,	0FH
 	JA	_ERR		;输入内容若出现大于15的则报错
 	MOV	CL,	5
-	MUL	CL		;计算AL * 5准备查表
+	MUL	CL		;计算AL×5准备查表
 	MOV	SI,	AX	;将计算结果装入SI
 	PRINTS	MSOUT		;输出提示文字
 	LEA	BX,	TABC	;开始查表
