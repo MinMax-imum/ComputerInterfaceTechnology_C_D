@@ -12,7 +12,7 @@ DATA	SEGMENT
 	STR2	DB	32, ?, 32 DUP (?)
 	MSOUTM	DB	"MATCH", 0AH, "$"
 	MSOUTN	DB	"NO MATCH", 0AH, "$"
-	MSEND	DB	"************* END ************", 0AH, "$"
+	MSEND	DB	"************ END *************", 0AH, "$"
 DATA	ENDS
 CODE	SEGMENT
 	ASSUME	CS:CODE, DS:DATA, SS:_STACK
