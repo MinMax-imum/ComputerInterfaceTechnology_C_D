@@ -11,7 +11,7 @@ DATA	SEGMENT
 	MS3	DB	"This is string three. ", "$"
 	MS4	DB	"This is string four. ", "$"
 	MS5	DB	"This is string five. ", "$"
-	MSEND	DB	"************* END ************", 0AH, "$"
+	MSEND	DB	"************ END *************", 0AH, "$"
 DATA	ENDS
 CODE	SEGMENT
 	ASSUME	CS:CODE, DS:DATA, SS:_STACK
