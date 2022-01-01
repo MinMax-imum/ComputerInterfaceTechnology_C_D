@@ -39,7 +39,7 @@ ENDIF
 	MSOUT	DB	"'. The ASCII is: ", "$"
 	MSHDOT	DB	"H.", "$"
 	MSNAN	DB	"'. Error: Not a HEX number! ", "$"
-	MSEND	DB	"************* END ************", 0AH, "$"
+	MSEND	DB	"************ END *************", 0AH, "$"
 DATA	ENDS
 CODE	SEGMENT
 	ASSUME	CS:CODE, DS:DATA, SS:_STACK
