@@ -92,6 +92,6 @@ int mian(void){
         printf("\n排序结果：\n ");
         outResult();    // 输出排序结果
     }
-    printf("\n************* END ************\n");
+    printf("\n************ END *************\n");
     return 0;
 }
