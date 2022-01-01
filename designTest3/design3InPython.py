@@ -66,4 +66,4 @@ else:
     #     print(str(numList[i]), end = sparator)
     # print(str(numList[numLen - 1]))
 
-print("\n************* END ************\n")
+print("\n************ END *************\n")
