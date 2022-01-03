@@ -46,8 +46,9 @@ void stringPareser(){   // 语法分析器
             if(runFlag & 0x01){         // 已经是两位数
                 runFlag |=  0x80;       // runFlag7 errFlag =   1
                 break;
-            }else if(runFlag & 0x02){   // 个位已用分离十位
-                tmpBuf[0]   =   strIn[i] - '0';
+            }else if(runFlag & 0x02){   // 个位已用将个位推到十位重新分离个位
+                tmpBuf[0]   =   tmpBuf[1];
+                tmpBuf[1]   =   strIn[i] - '0';
                 runFlag     |=  0x01;   // runFlag0 digitFlag   =   1
                                         // 标记为两位数
             }else{                      // 个位未用分离个位
